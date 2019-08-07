@@ -1,13 +1,13 @@
 {
-  "name": "react-redux-boilerplate",
+  "name": "calendar-app",
   "version": "1.0.0",
-  "description": "A minimal react-redux boilerplate with all the best practices",
+  "description": "A minimal calendar app",
   "repository": {
     "type": "git",
-    "url": "git://github.com/flexdinesh/react-redux-boilerplate.git"
+    "url": "https://github.com/realbisoye/calendarapp.git"
   },
   "license": "MIT",
-  "author": "Dinesh Pandiyan",
+  "author": "Abisoye Atolagbe",
   "scripts": {
     "prebuild": "npm run build:clean",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.babel.js --color -p --progress --hide-modules --display-optimization-bailout",

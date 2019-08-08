@@ -9,7 +9,9 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-export const LOAD_REPOS = 'boilerplate/App/LOAD_REPOS';
-export const LOAD_REPOS_SUCCESS = 'boilerplate/App/LOAD_REPOS_SUCCESS';
-export const LOAD_REPOS_ERROR = 'boilerplate/App/LOAD_REPOS_ERROR';
+export const LOAD_REMINDERS = 'calendar/App/LOAD_REMINDERS';
+export const LOAD_REMINDERS_SUCCESS = 'calendar/App/LOAD_REMINDERS_SUCCESS';
+export const LOAD_REMINDERS_ERROR = 'calendar/App/LOAD_REMINDERS_ERROR';
+export const ADD_REMINDER = 'calendar/App/ADD_REMINDER';
+export const ADD_REMINDER_REQUEST = 'calendar/App/ADD_REMINDER_REQUEST';
 export const DEFAULT_LOCALE = 'en';

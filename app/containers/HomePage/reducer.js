@@ -3,6 +3,7 @@ import { CHANGE_USERNAME } from './constants';
 // The initial state of the App
 const initialState = {
   username: '',
+  reminders: [],
 };
 
 function homeReducer(state = initialState, action) {

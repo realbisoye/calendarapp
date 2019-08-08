@@ -4,27 +4,30 @@ import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import {
-  makeSelectRepos,
+  makeSelectReminders,
   makeSelectLoading,
   makeSelectError
 } from 'containers/App/selectors';
-import { loadRepos } from '../App/actions';
-import { changeUsername } from './actions';
+import { loadReminders, addReminder, remindersLoaded } from '../App/actions';
 import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import HomePage from './HomePage';
 
 const mapDispatchToProps = (dispatch) => ({
-  onChangeUsername: (evt) => dispatch(changeUsername(evt.target.value)),
-  onSubmitForm: (evt) => {
-    if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-    dispatch(loadRepos());
+  onReminderAdd: (reminder) => {
+    dispatch(addReminder(reminder));
+  },
+  loadUserReminders: () => {
+    dispatch(loadReminders());
+  },
+  updateReminders: (reminders) => {
+    dispatch(remindersLoaded(reminders));
   }
 });
 
 const mapStateToProps = createStructuredSelector({
-  repos: makeSelectRepos(),
+  reminders: makeSelectReminders(),
   username: makeSelectUsername(),
   loading: makeSelectLoading(),
   error: makeSelectError()

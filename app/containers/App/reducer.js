@@ -1,42 +1,56 @@
-import { LOAD_REPOS_SUCCESS, LOAD_REPOS, LOAD_REPOS_ERROR } from './constants';
+import {
+  LOAD_REMINDERS_SUCCESS, LOAD_REMINDERS, LOAD_REMINDERS_ERROR, ADD_REMINDER, ADD_REMINDER_REQUEST
+} from './constants';
 
 // The initial state of the App
 export const initialState = {
   loading: false,
   error: false,
-  currentUser: false,
-  userData: {
-    repositories: false,
-  },
+  reminders: [],
 };
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
-    case LOAD_REPOS: {
+    case LOAD_REMINDERS: {
       const newState = {
         ...state,
         loading: true,
         error: false,
-        userData: {
-          repositories: false,
-        },
+        reminders: []
       };
 
       return newState;
     }
-    case LOAD_REPOS_SUCCESS: {
+
+    case ADD_REMINDER_REQUEST: {
+      const newState = {
+        ...state,
+        loading: true,
+        error: false,
+      };
+
+      return newState;
+    }
+
+    case LOAD_REMINDERS_SUCCESS: {
       const newState = {
         ...state,
         loading: false,
-        userData: {
-          repositories: action.repos,
-        },
-        currentUser: action.username,
+        reminders: action.reminders,
       };
       return newState;
     }
 
-    case LOAD_REPOS_ERROR: {
+    case ADD_REMINDER: {
+      const newState = {
+        ...state,
+        loading: false,
+        reminders: [...state.reminders, action.reminder],
+      };
+      return newState;
+    }
+
+    case LOAD_REMINDERS_ERROR: {
       return { ...state, error: action.error, loading: false };
     }
     default:

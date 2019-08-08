@@ -4,10 +4,10 @@
 
 import { put, takeLatest } from 'redux-saga/effects';
 
-import { LOAD_REPOS } from 'containers/App/constants';
-import { reposLoaded, repoLoadingError } from 'containers/App/actions';
+import { LOAD_REMINDERS } from 'containers/App/constants';
+import { remindersLoaded, remindersLoadingError } from 'containers/App/actions';
 
-import githubData, { getRepos } from '../saga';
+import reminderData, { getRepos } from '../saga';
 
 const username = 'flexdinesh';
 
@@ -27,28 +27,28 @@ describe('getRepos Saga', () => {
     expect(callDescriptor).toMatchSnapshot();
   });
 
-  it('should dispatch the reposLoaded action if it requests the data successfully', () => {
+  it('should dispatch the remindersLoaded action if it requests the data successfully', () => {
     const response = [{
       name: 'First repo',
     }, {
       name: 'Second repo',
     }];
     const putDescriptor = getReposGenerator.next(response).value;
-    expect(putDescriptor).toEqual(put(reposLoaded(response, username)));
+    expect(putDescriptor).toEqual(put(remindersLoaded(response, username)));
   });
 
-  it('should call the repoLoadingError action if the response errors', () => {
+  it('should call the remindersLoadingError action if the response errors', () => {
     const response = new Error('Some error');
     const putDescriptor = getReposGenerator.throw(response).value;
-    expect(putDescriptor).toEqual(put(repoLoadingError(response)));
+    expect(putDescriptor).toEqual(put(remindersLoadingError(response)));
   });
 });
 
-describe('githubDataSaga Saga', () => {
-  const githubDataSaga = githubData();
+describe('reminderDataSaga Saga', () => {
+  const reminderDataSaga = reminderData();
 
-  it('should start task to watch for LOAD_REPOS action', () => {
-    const takeLatestDescriptor = githubDataSaga.next().value;
-    expect(takeLatestDescriptor).toEqual(takeLatest(LOAD_REPOS, getRepos));
+  it('should start task to watch for LOAD_REMINDERS action', () => {
+    const takeLatestDescriptor = reminderDataSaga.next().value;
+    expect(takeLatestDescriptor).toEqual(takeLatest(LOAD_REMINDERS, getRepos));
   });
 });

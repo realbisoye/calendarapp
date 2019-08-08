@@ -16,48 +16,71 @@
  */
 
 import {
-  LOAD_REPOS,
-  LOAD_REPOS_SUCCESS,
-  LOAD_REPOS_ERROR,
+  LOAD_REMINDERS,
+  LOAD_REMINDERS_SUCCESS,
+  LOAD_REMINDERS_ERROR,
+  ADD_REMINDER,
+  ADD_REMINDER_REQUEST,
 } from './constants';
 
 /**
- * Load the repositories, this action starts the request saga
+ * Load the reminders, this action starts the request saga
  *
- * @return {object} An action object with a type of LOAD_REPOS
+ * @return {object} An action object with a type of LOAD_REMINDERS
  */
-export function loadRepos() {
+export function loadReminders() {
   return {
-    type: LOAD_REPOS,
+    type: LOAD_REMINDERS,
   };
 }
 
 /**
- * Dispatched when the repositories are loaded by the request saga
+ * Dispatched when the reminders are loaded by the request saga
  *
  * @param  {array} repos The repository data
  * @param  {string} username The current username
  *
- * @return {object}      An action object with a type of LOAD_REPOS_SUCCESS passing the repos
+ * @return {object}      An action object with a type of LOAD_REMINDERS_SUCCESS passing the repos
  */
-export function reposLoaded(repos, username) {
+export function remindersLoaded(reminders) {
   return {
-    type: LOAD_REPOS_SUCCESS,
-    repos,
-    username,
+    type: LOAD_REMINDERS_SUCCESS,
+    reminders,
   };
 }
 
 /**
- * Dispatched when loading the repositories fails
+ * Dispatched when loading the reminders fails
  *
  * @param  {object} error The error
  *
- * @return {object}       An action object with a type of LOAD_REPOS_ERROR passing the error
+ * @return {object}       An action object with a type of LOAD_REMINDERS_ERROR passing the error
  */
-export function repoLoadingError(error) {
+export function remindersLoadingError(error) {
   return {
-    type: LOAD_REPOS_ERROR,
+    type: LOAD_REMINDERS_ERROR,
     error,
+  };
+}
+
+/**
+ * Dispatched when new reminder is added
+ *
+ * @param  {object} reminder The new reminder object
+ *
+ * @return {object}       An action object with a type of ADD_REMINDER and new reminder data
+ */
+
+export function addedReminder(reminder) {
+  return {
+    type: ADD_REMINDER,
+    reminder,
+  };
+}
+
+export function addReminder(reminder) {
+  return {
+    type: ADD_REMINDER_REQUEST,
+    reminder
   };
 }

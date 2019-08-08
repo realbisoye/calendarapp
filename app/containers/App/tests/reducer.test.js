@@ -1,5 +1,5 @@
 import appReducer from '../reducer';
-import { loadRepos, reposLoaded, repoLoadingError } from '../actions';
+import { loadReminders, remindersLoaded, remindersLoadingError } from '../actions';
 
 describe('appReducer', () => {
   let state;
@@ -19,17 +19,17 @@ describe('appReducer', () => {
     expect(appReducer(undefined, {})).toEqual(expectedResult);
   });
 
-  it('should handle the loadRepos action correctly', () => {
+  it('should handle the loadReminders action correctly', () => {
     const expectedResult = {
       ...state,
       loading: true,
       error: false,
       userData: { repositories: false },
     };
-    expect(appReducer(state, loadRepos())).toEqual(expectedResult);
+    expect(appReducer(state, loadReminders())).toEqual(expectedResult);
   });
 
-  it('should handle the reposLoaded action correctly', () => {
+  it('should handle the remindersLoaded action correctly', () => {
     const fixture = [
       {
         name: 'My Repo',
@@ -43,12 +43,12 @@ describe('appReducer', () => {
       userData: { repositories: fixture },
     };
 
-    expect(appReducer(state, reposLoaded(fixture, username))).toEqual(
+    expect(appReducer(state, remindersLoaded(fixture, username))).toEqual(
       expectedResult,
     );
   });
 
-  it('should handle the repoLoadingError action correctly', () => {
+  it('should handle the remindersLoadingError action correctly', () => {
     const fixture = {
       msg: 'Not found',
     };
@@ -59,7 +59,7 @@ describe('appReducer', () => {
       loading: false,
     };
 
-    expect(appReducer(state, repoLoadingError(fixture))).toEqual(
+    expect(appReducer(state, remindersLoadingError(fixture))).toEqual(
       expectedResult,
     );
   });

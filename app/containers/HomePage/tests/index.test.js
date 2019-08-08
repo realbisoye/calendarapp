@@ -9,7 +9,7 @@ import ReposList from 'components/ReposList';
 import HomePage from '../HomePage';
 import { mapDispatchToProps } from '../index';
 import { changeUsername } from '../actions';
-import { loadRepos } from '../../App/actions';
+import { loadReminders } from '../../App/actions';
 
 describe('<HomePage />', () => {
   it('should render the repos list', () => {
@@ -75,11 +75,11 @@ describe('<HomePage />', () => {
         expect(result.onSubmitForm).toBeDefined();
       });
 
-      it('should dispatch loadRepos when called', () => {
+      it('should dispatch loadReminders when called', () => {
         const dispatch = jest.fn();
         const result = mapDispatchToProps(dispatch);
         result.onSubmitForm();
-        expect(dispatch).toHaveBeenCalledWith(loadRepos());
+        expect(dispatch).toHaveBeenCalledWith(loadReminders());
       });
 
       it('should preventDefault if called with event', () => {

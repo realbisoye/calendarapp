@@ -1,4 +1,4 @@
-# Simple Calendar APp
+# Simple Calendar APP
 
 ## Quick start
 
